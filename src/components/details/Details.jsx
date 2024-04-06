@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useStock } from "../../context/ContextAPI";
 import { nanoid } from "nanoid";
 import './detail.scss';
+import Lottie from "../../common/lottie/Lottie";
 
 const Details = () => {
   const { id } = useParams();
@@ -207,6 +208,7 @@ const Details = () => {
           )
         )}
       </div>
+      <Lottie/>
     </main>
   );
 };

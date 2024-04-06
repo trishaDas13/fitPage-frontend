@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { useParams } from "react-router-dom";
 import { useStock } from "../../context/ContextAPI";
 import './style.scss';
+import Lottie from "../../common/lottie/Lottie";
 
 const Values = () => {
   const { val, idx } = useParams();
@@ -86,6 +87,7 @@ const Values = () => {
         )
       )}
     </div>
+    <Lottie/>
     </main>
   );
 };

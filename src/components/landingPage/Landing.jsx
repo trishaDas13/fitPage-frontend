@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { HashRouter, Link } from "react-router-dom";
 import "./landing.scss";
 import Loder from "../../common/loader/Loder";
+import Lottie from "../../common/lottie/Lottie";
 
 const Landing = () => {
   const { stockData } = useStock();
@@ -25,6 +26,7 @@ const Landing = () => {
               );
             })}
           </div>
+          <Lottie/>
         </main>
       ) : (
         <Loder />

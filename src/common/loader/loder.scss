@@ -7,7 +7,7 @@
     box-sizing: border-box;
     position: relative;
     animation: pulse 1s linear infinite;
-    margin: 5rem;
+    margin-top: 5rem;
     &:after {
       content: '';
       position: absolute;
@@ -42,3 +42,8 @@
     }
   }
   
+  .loader_text{
+    font-size: 14px;
+    padding: 0.5rem;
+    font-weight: 500;
+  }

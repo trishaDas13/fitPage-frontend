@@ -53,17 +53,25 @@ const Details = () => {
               </p>
             </div>
             <p className="content">
-              {stockData[id - 1]?.criteria[0]?.text.split(" ").map((item, idx) => {
-                if (item === "$1") {
-                  return (
-                    <Link to={`/values/${stockData[id - 1]?.id}/${idx}`} key={nanoid()}>
-                      {stockData[id - 1]?.criteria[0]?.variable?.$1?.values[0] + " "}
-                    </Link>
-                  );
-                } else {
-                  return (<span key={nanoid()}>{item  + " "}</span>);
-                }
-              })}
+              {stockData[id - 1]?.criteria[0]?.text
+                .split(" ")
+                .map((item, idx) => {
+                  if (item === "$1") {
+                    return (
+                      <Link
+                        to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                        key={nanoid()}
+                      >
+                        {"(" +
+                          stockData[id - 1]?.criteria[0]?.variable?.$1
+                            ?.values[0] +
+                          ") "}
+                      </Link>
+                    );
+                  } else {
+                    return <span key={nanoid()}>{item + " "}</span>;
+                  }
+                })}
             </p>
           </div>
         ) : id === "4" ? (
@@ -74,17 +82,39 @@ const Details = () => {
                 {stockData[id - 1]?.tag}
               </p>
             </div>
-            <p className="content">{stockData[id - 1]?.criteria[0]?.text.split(" ").map((item, idx) => {
-                if (item === "$1") {
-                  return (
-                    <Link to={`/values/${stockData[id - 1]?.id}/${idx}`} key={nanoid()}>
-                      {stockData[id - 1]?.criteria[0]?.variable?.$1?.values[0] + " "}
-                    </Link>
-                  );
-                } else {
-                  return (<span key={nanoid()}>{item  + " "}</span>);
-                }
-              })}</p>
+            <p className="content">
+              {stockData[id - 1]?.criteria[0]?.text
+                .split(" ")
+                .map((item, idx) => {
+                  if (item === "$1") {
+                    return (
+                      <Link
+                        to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                        key={nanoid()}
+                      >
+                        {"(" +
+                          stockData[id - 1]?.criteria[0]?.variable?.$1
+                            ?.default_value +
+                          ") "}
+                      </Link>
+                    );
+                  } else if (item === "$2") {
+                    return (
+                      <Link
+                        to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                        key={nanoid()}
+                      >
+                        {"(" +
+                          stockData[id - 1]?.criteria[0]?.variable?.$2
+                            ?.values[0] +
+                          ") "}
+                      </Link>
+                    );
+                  } else {
+                    return <span key={nanoid()}>{item + " "}</span>;
+                  }
+                })}
+            </p>
           </div>
         ) : (
           id === "5" && (
@@ -100,10 +130,68 @@ const Details = () => {
                   return (
                     <div className="para" key={nanoid()}>
                       {i === stockData[id - 1]?.criteria.length - 1 ? (
-                        <p key={nanoid()}>{ele.text}</p>
+                        <p key={nanoid()}>
+                          {ele.text.split(" ").map((item, idx) => {
+                            if (item === "$4") {
+                              return (
+                                <Link
+                                  to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                                  key={nanoid()}
+                                >
+                                  {"(" +
+                                    stockData[id - 1]?.criteria[2]?.variable?.$4
+                                      ?.default_value +
+                                    ") "}
+                                </Link>
+                              );
+                            } else {
+                             return( <span key={nanoid()}>{item + " "}</span>)
+                            }
+                          })}
+                        </p>
                       ) : (
                         <p key={nanoid()}>
-                          {ele.text} <br /> <span>and</span>
+                          {ele.text.split(" ").map((item, idx)=>{
+                            if(item === "$1"){
+                              return (
+                                <Link
+                                  to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                                  key={nanoid()}
+                                >
+                                  {"(" +
+                                    stockData[id - 1]?.criteria[0]?.variable?.$1
+                                      ?.values[0] +
+                                    ") "}
+                                </Link>
+                              );
+                            }else if(item === "$2"){
+                              return (
+                                <Link
+                                  to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                                  key={nanoid()}
+                                >
+                                  {"(" +
+                                    stockData[id - 1]?.criteria[1]?.variable?.$2
+                                      ?.values[0] +
+                                    ") "}
+                                </Link>
+                              );
+                            }else if(item === "$3"){
+                              return (
+                                <Link
+                                  to={`/values/${stockData[id - 1]?.id}/${idx}`}
+                                  key={nanoid()}
+                                >
+                                  {"(" +
+                                    stockData[id - 1]?.criteria[1]?.variable?.$3
+                                      ?.values[0] +
+                                    ") "}
+                                </Link>
+                              );
+                            }else{
+                              return( <span key={nanoid()}>{item + " "}</span>)
+                            }
+                          })} <br /> <span>and</span>
                         </p>
                       )}
                     </div>

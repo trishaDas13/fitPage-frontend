@@ -2,14 +2,15 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useStock } from "../../context/ContextAPI";
 import { nanoid } from "nanoid";
+import './detail.scss';
 
 const Details = () => {
   const { id } = useParams();
   const { stockData } = useStock();
 
   return (
-    <div className="detailsContainer">
-      <div className="details1">
+    <main>
+      <div className="details">
         {id === "1" ? (
           <div className="container">
             <div className="header">
@@ -18,7 +19,7 @@ const Details = () => {
                 {stockData[id - 1]?.tag}
               </p>
             </div>
-            <p className="content">{stockData[id - 1]?.criteria[0]?.text}</p>
+            <div className="content"><p>{stockData[id - 1]?.criteria[0]?.text}</p></div>
           </div>
         ) : id === "2" ? (
           <div className="container">
@@ -36,7 +37,7 @@ const Details = () => {
                       <p key={nanoid()}>{ele.text}</p>
                     ) : (
                       <p key={nanoid()}>
-                        {ele.text} <br /> <span>and</span>
+                        {ele.text} <span className="and">and</span>
                       </p>
                     )}
                   </div>
@@ -52,7 +53,8 @@ const Details = () => {
                 {stockData[id - 1]?.tag}
               </p>
             </div>
-            <p className="content">
+            <div className="content">
+              <p>
               {stockData[id - 1]?.criteria[0]?.text
                 .split(" ")
                 .map((item, idx) => {
@@ -72,7 +74,8 @@ const Details = () => {
                     return <span key={nanoid()}>{item + " "}</span>;
                   }
                 })}
-            </p>
+              </p>
+            </div>
           </div>
         ) : id === "4" ? (
           <div className="container">
@@ -82,7 +85,8 @@ const Details = () => {
                 {stockData[id - 1]?.tag}
               </p>
             </div>
-            <p className="content">
+            <div className="content">
+              <p>
               {stockData[id - 1]?.criteria[0]?.text
                 .split(" ")
                 .map((item, idx) => {
@@ -114,7 +118,8 @@ const Details = () => {
                     return <span key={nanoid()}>{item + " "}</span>;
                   }
                 })}
-            </p>
+              </p>
+            </div>
           </div>
         ) : (
           id === "5" && (
@@ -130,7 +135,7 @@ const Details = () => {
                   return (
                     <div className="para" key={nanoid()}>
                       {i === stockData[id - 1]?.criteria.length - 1 ? (
-                        <p key={nanoid()}>
+                        <p key={nanoid()} className="last">
                           {ele.text.split(" ").map((item, idx) => {
                             if (item === "$4") {
                               return (
@@ -150,7 +155,7 @@ const Details = () => {
                           })}
                         </p>
                       ) : (
-                        <p key={nanoid()}>
+                        <p key={nanoid()} className="last">
                           {ele.text.split(" ").map((item, idx)=>{
                             if(item === "$1"){
                               return (
@@ -191,7 +196,7 @@ const Details = () => {
                             }else{
                               return( <span key={nanoid()}>{item + " "}</span>)
                             }
-                          })} <br /> <span>and</span>
+                          })} <br /> <span className="and andlast">and</span>
                         </p>
                       )}
                     </div>
@@ -202,7 +207,7 @@ const Details = () => {
           )
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

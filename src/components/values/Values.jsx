@@ -2,23 +2,24 @@ import React from "react";
 import { nanoid } from "nanoid";
 import { useParams } from "react-router-dom";
 import { useStock } from "../../context/ContextAPI";
+import './style.scss';
 
 const Values = () => {
   const { val, idx } = useParams();
-  console.log("val", val, "idx", idx);
   const { stockData } = useStock();
 
   return (
-    <div className="values">
+    <main>
+      <div className="values">
       {val === "3" && idx === "6" ? (
         stockData[val - 1]?.criteria[0]?.variable?.$1.values
           .slice()
           .sort((a, b) => b - a)
-          .map((item) => <p key={nanoid()}>{item}</p>)
+          .map((item) => <p key={nanoid()} className="value">{item}</p>)
       ) : val === "4" && idx === "1" ? (
         <div className="params">
           <h4 className="heading"> {stockData[val - 1]?.name}</h4>
-          <p>Set Parametes</p>
+          <p>Set Parametes :</p>
           <form action="">
             <label htmlFor="">Periods:</label>
             <input
@@ -33,17 +34,17 @@ const Values = () => {
         stockData[val - 1]?.criteria[0]?.variable?.$2.values
           .slice()
           .sort((a, b) => a - b)
-          .map((item) => <p key={nanoid()}>{item}</p>)
+          .map((item) => <p key={nanoid()} className="value">{item}</p>)
       ) : val === "5" && idx === "14" ? (
         stockData[val - 1]?.criteria[0]?.variable?.$1.values
           .slice()
           .sort((a, b) => a - b)
-          .map((item) => <p key={nanoid()}>{item}</p>)
+          .map((item) => <p key={nanoid()} className="value">{item}</p>)
       ) : val === "5" && idx === "4" ? (
         stockData[val - 1]?.criteria[1]?.variable?.$2.values
           .slice()
           .sort((a, b) => a - b)
-          .map((item) => <p key={nanoid()}>{item}</p>)
+          .map((item) => <p key={nanoid()} className="value">{item}</p>)
       ) : val === "5" && idx === "8" ? (
         stockData[val - 1]?.criteria[1]?.variable?.$3.values
           .slice()
@@ -65,7 +66,7 @@ const Values = () => {
 
             return a - b;
           })
-          .map((item) => <p key={nanoid()}>{item}</p>)
+          .map((item) => <p key={nanoid()} className="value">{item}</p>)
       ) : (
         val === "5" &&
         idx === "1" && (
@@ -85,6 +86,7 @@ const Values = () => {
         )
       )}
     </div>
+    </main>
   );
 };
 

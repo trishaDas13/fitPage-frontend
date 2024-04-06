@@ -1,0 +1,17 @@
+header{
+    background-color: rgba(221, 59, 59, 0.897);
+    color: white;
+    padding: 0.5rem 2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0 5px  rgb(83, 83, 83);
+    width: 100%;
+    .head_content{
+        h1{
+            font-weight: 500;
+        }
+        p{
+            font-size: 12px;
+            padding-left: 3rem;
+        }
+    }
+}
